@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 18rem;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-content p {
+            margin: 8px 0;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .card-content p.title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div>
+            <img src="/static/{{item_data[5]}}" alt="Product Image">
+        </div>
+        <div class="card-content">
+            <p class="title">{{item_data[0]}}</p>
+            <p>{{item_data[1]}}</p>
+            <p>{{item_data[2]}}</p>
+            <p>{{item_data[3]}}</p>
+            <p>{{item_data[4]}}</p>
+            <p>{{item_data[6]}}</p>
+        </div>
+    </div>
+</body>
+
+</html>

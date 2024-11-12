@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* background-image: url("https://i.pinimg.com/originals/e4/a6/b9/e4a6b92746b595562938d01b6a5e4445.gif"); */
+            background-image: url("https://thumbs.dreamstime.com/b/shopping-cart-full-fresh-produce-sketch-raster-brimming-assortment-fruits-vegetables-engraving-generative-ai-319897497.jpg");
+            background-size: 48%;
+        }
+        .container{
+            background-color: white;
+            padding-top: 2%;
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 20%;
+            margin-left: 1%;
+            margin-top: 15%;
+            padding-bottom: 1%;
+        }
+        .container input{
+            padding: 5px;
+            border-radius: 20px;
+        }
+        .container button{
+            padding: 5px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <center>
+        <div class="container">
+            <h1>Login</h1>
+            <label>Email</label>
+            <input required type="text" name="email" placeholder="Enter your Email">
+            <p>
+                <label>Password</label>
+                <input required type="text" name="password" placeholder="Enter Your password">
+            </p>
+            <p>Don't have an account? <a href="user_signup.html">Sign up</a> </p>
+            <p>Forgot Password <a href="#">Click here</a></p>
+            <a href="{{url_for('index')}}"><button>Submit</button></a>
+        </div>
+    </center>
+    </form>
+</body>
+</html>

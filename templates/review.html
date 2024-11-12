@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .review-form {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding-right: 2%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-form h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .review-form p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .rating-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rating-group input {
+            display: none;
+        }
+
+        .rating-group label {
+            font-size: 1.2rem;
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .rating-group input:checked ~ label,
+        .rating-group label:hover,
+        .rating-group label:hover ~ label {
+            color: #ffd700; /* Gold color for selected stars */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            width: 48%; /* Equal width for both buttons */
+            padding: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-group .home-btn {
+            background-color: #6c757d;
+        }
+
+        .button-group .home-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .button-group .submit-btn {
+            background-color: #007bff;
+        }
+
+        .button-group .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<body>
+    <form class="review-form" method="post">
+        <h2>Write a Review</h2>
+        
+        <p>
+            <label for="title">Review Title</label>
+            <input type="text" id="title" name="title" required>
+        </p>
+        
+        <p>
+            <label for="review">Review Description</label>
+            <textarea id="review" name="review" required></textarea>
+        </p>
+        
+        <p>
+            <label>Rating</label>
+            <div class="rating-group">
+                <input type="radio" id="star5" name="rate" value="5">
+                <label for="star5">★</label>
+                <input type="radio" id="star4" name="rate" value="4">
+                <label for="star4">★</label>
+                <input type="radio" id="star3" name="rate" value="3">
+                <label for="star3">★</label>
+                <input type="radio" id="star2" name="rate" value="2">
+                <label for="star2">★</label>
+                <input type="radio" id="star1" name="rate" value="1">
+                <label for="star1">★</label>
+            </div>
+        </p>
+        
+        <div class="button-group">
+            <button type="button" class="home-btn" onclick="window.location.href='/'">Go to Home</button>
+            <button type="submit" class="submit-btn">Submit Review</button>
+        </div>
+    </form>
+</body>
+</html>

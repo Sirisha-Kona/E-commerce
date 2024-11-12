@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 650px; /* Adjust width as needed */
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card img {
+            width: 40%; /* Set the width for the image side */
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            width: 60%; /* Set the width for the content side */
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h2, .card-content h3 {
+            margin: 8px 0;
+        }
+
+        .card-content h2.title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .button {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .button a button {
+            padding: 3px -1; /* Vertical padding */
+            width: 80px; /* Fixed width for equal-sized buttons */
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .review-section label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        .review-section {
+            margin-top: 16px;
+            padding: 16px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="/static/{{data[6]}}" alt="Product Image">
+        <div class="card-content">
+            <h2 class="title">Product Name: {{ data[1] }}</h2>
+            <a href=""><h3 class="item_id">Item ID: {{ data[0] }}</h3></a>
+            <h3 class="desc">Description: {{ data[2] }}</h3>
+            <h3 class="cat">Category: {{ data[3] }}</h3>
+            <h3 class="price">Price: {{ data[4] }}</h3>
+            <h3 class="stock">Available stock: {{ data[5] }}</h3>
+            <div class="button">
+                {% if session.get("user") %}
+                <a href="{{url_for('addcart',itemid=data[0])}}"><button style="border-radius: 5px;" class="btn btn-success">Add to Cart</button></a>
+                {% endif %}
+                <a href="{{ url_for('addreview', itemid=data[0]) }}"><button style="border-radius: 5px;" class="btn btn-danger">Add Review</button></a>
+                <a href="{{ url_for('readreview', itemid=data[0]) }}"><button style="border-radius: 5px;" class="btn btn-success">Read Review</button></a>
+                <a href="{{ url_for('index') }}"><button style="padding: 10px 0;border-radius: 5px;" class="btn btn-danger">Back</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="review-section">
+        {% for i in data2 %}
+        <label>Title: {{ i[5] }}</label>
+        <label>Review: {{ i[1] }}</label>
+        <label>Rating: {{ i[6] }}</label>
+        <label>User: {{ i[3] }}</label>
+        {% endfor %}
+    </div>
+</body>
+</html>

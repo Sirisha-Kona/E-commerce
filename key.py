@@ -1,0 +1,7 @@
+secret_key=b"\xcc\xa7(\xf9|\xd6\xcbI=\xe6g'\xd4\xec2"
+salt="registerverify"
+
+
+# import os
+# os.urandom(15)
+# b"\xcc\xa7(\xf9|\xd6\xcbI=\xe6g'\xd4\xec2"

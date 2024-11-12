@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("https://i.redd.it/xtnq910zl4571.gif");
+            background-size: cover;
+            margin-left: 40%;
+            margin-top: 17%;
+            max-width: 20%;
+            text-align: center;
+        }
+        .container input,button{
+            border-radius: 10px;
+            padding: 5px;
+            max-width: 70%;
+        }
+        .container{
+            background-color: rgba(17,58,62,255);
+            border: 2px solid rgba(216,180,85,255);
+            border-radius: 10px;
+            padding-top: 0.5%;
+            padding-bottom: 0.5%;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<body>
+    <form method="post">
+        <div class="container">
+            <h2 style="color: aliceblue;">OTP</h2>
+            <p><input name="otp" type="text" placeholder="Otp"></p>
+            <p><a href="{{url_for('user_login')}}"><button>Verify OTP</button></a></p>
+        </div>
+    </form>
+</body>
+</html>
